@@ -208,3 +208,15 @@ atmosphere's ctsm code into its own library, and having the same
 interface as the real ctsm code. This links the executable, but at
 runtime, the wrong thing happens: lilac ends up calling the atmosphere's
 version rather than its own.
+
+I then made another commit where I changed the interface of the
+subroutines in the atmosphere's ctsm. This still avoids the link issues,
+but operates even more incorrectly:
+
+```
+$ atm/atm.exe
+ atmosphere's version:            0
+   3.0000000000000755
+ atmosphere's version:          402
+         170
+```
