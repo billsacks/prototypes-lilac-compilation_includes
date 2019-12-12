@@ -69,7 +69,7 @@ run something like:
 
 Works with only `-I../lilac` in the compilation of atm.
 
-This is true in both commits 0803cdc and 41f7e06.
+This is true in commits 0803cdc, 41f7e06 and 01c96e4.
 
 #### ifort 19.0.2 on cheyenne
 
@@ -85,3 +85,5 @@ atm.f90(3): error #7002: Error in opening the compiled module file.  Check INCLU
 ------^
 ```
 
+But in commit 01c96e4 this works again. The difference in this commit
+is that module visibility is private by default.
