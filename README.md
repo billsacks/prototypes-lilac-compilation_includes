@@ -24,7 +24,7 @@ atmosphere model and CTSM module names.
 
 ## Details of what we're testing here
 
-There are two separate test cases here:
+The original intent was to have two separate test cases here:
 
 1. `shr_kind_dependency`: This is a control case that captures the
    current situation, where the directly-used LILAC code has a
@@ -53,6 +53,11 @@ I'm hoping to show that, in the `shr_kind_dependency` case, the include
 line for `atm` needs to include `shr` as well as `lilac`, but shouldn't
 need to include `ctsm`. In the `no_shr_kind_dependency` case, I hope the
 include line for `atm` only needs to include `lilac`.
+
+However, I have ended up not creating the `no_shr_kind_dependency`
+directory, because with pgi I ran into trouble even with the indirect
+use of ctsm code in the `shr_kind_dependency` case; this wouldn't have
+changed in the `no_shr_kind_dependency` case.
 
 ## Compiling
 
