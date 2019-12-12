@@ -85,5 +85,14 @@ atm.f90(3): error #7002: Error in opening the compiled module file.  Check INCLU
 ------^
 ```
 
+I determined that the problem is the rename of `shr_kind_r8` to `r8`
+(see branch `rename_shr_kind`).
+
 But in commit 01c96e4 this works again. The difference in this commit
 is that module visibility is private by default.
+
+## Conclusions
+
+If we have symbol renames in use statements, then we need to be careful
+to make modules have default private visibility. This default private
+visibility is good practice in general, and we should do it regardless.
