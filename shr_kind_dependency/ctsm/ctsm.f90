@@ -2,6 +2,7 @@ module ctsm
 
   use shr_kind_mod, only : r8 => shr_kind_r8
   implicit none
+  private
 
   public :: ctsm_in
   public :: ctsm_out

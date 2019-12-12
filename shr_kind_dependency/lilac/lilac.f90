@@ -3,6 +3,7 @@ module lilac
   use shr_kind_mod, only : r8 => shr_kind_r8
   use ctsm, only : ctsm_in, ctsm_out
   implicit none
+  private
 
   public :: lilac_in, lilac_out
 

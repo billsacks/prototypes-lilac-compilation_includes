@@ -2,6 +2,7 @@ module atm
 
   use lilac, only : lilac_in, lilac_out
   implicit none
+  private
 
   public :: atm_driver
 
