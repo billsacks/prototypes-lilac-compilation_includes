@@ -103,6 +103,12 @@ PGF90-F-0004-Unable to open MODULE file ctsm.mod (atm.f90: 4)
 So pgi seems to want us to include modules indirectly used by the
 directly-used lilac modules.
 
+Commit 1282a63, where I split lilac into a separate internal module,
+doesn't help: I was hoping that I could satisfy pgi by having the atm
+build include everything that it needed directly and 1-level indirectly,
+but I get the same error as before - so it seems we need to include
+further levels of indirect uses.
+
 ## Conclusions
 
 If we have symbol renames in use statements, then we need to be careful
