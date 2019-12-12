@@ -65,7 +65,23 @@ run something like:
 
 ### `shr_kind_dependency`
 
-- gfortran 8.2.0 on my Mac: works with only `-I../lilac` in the
-  compilation of atm
-  
+#### gfortran 8.2.0 on my Mac
+
+Works with only `-I../lilac` in the compilation of atm.
+
+This is true in both commits 0803cdc and 41f7e06.
+
+#### ifort 19.0.2 on cheyenne
+
+In commit 0803cdc, works with only `-I../lilac` in the compilation of
+atm.
+
+However, in commit 41f7e06, which makes some tweaks to be more close to
+the actual code, I am able to reproduce the error:
+
+```
+atm.f90(3): error #7002: Error in opening the compiled module file.  Check INCLUDE paths.   [SHR_KIND_MOD]
+  use lilac, only : lilac_in, lilac_out
+------^
+```
 
