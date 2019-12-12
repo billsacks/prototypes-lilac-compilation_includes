@@ -125,3 +125,72 @@ visibility is good practice in general, and we should do it regardless.
 
 However, even with this, pgi still wants us to include modules
 indirectly used by the directly-used lilac modules.
+
+## Exploring link-time issues
+
+If I introduce the following diffs:
+
+```diff
+diff --git a/shr_kind_dependency/atm/atm.f90 b/shr_kind_dependency/atm/atm.f90
+index 97f4349..9b79bc4 100644
+--- a/shr_kind_dependency/atm/atm.f90
++++ b/shr_kind_dependency/atm/atm.f90
+@@ -20,10 +20,26 @@ subroutine atm_driver()
+   end subroutine atm_driver
+ end module atm
+
++module ctsm
++  implicit none
++  private
++
++  public :: ctsm_in
++
++contains
++
++  subroutine ctsm_in(x)
++    integer, intent(in) :: x
++
++    print *, 'atm driver ctsm_in: ', x
++  end subroutine ctsm_in
++end module ctsm
+
+ program atm_program
+   use atm, only : atm_driver
++  use ctsm, only : ctsm_in
+   implicit none
+
+   call atm_driver()
++  call ctsm_in(42)
+ end program atm_program
+```
+
+Then I get a failure at link-time (with gfortran):
+
+```
+gfortran -o atm.exe atm.o -L../lilac -llilac -L../ctsm -lctsm -L../shr -lshr
+duplicate symbol '___ctsm_MOD_ctsm_in' in:
+    atm.o
+    ../ctsm/libctsm.a(ctsm.o)
+ld: 1 duplicate symbol for architecture x86_64
+collect2: error: ld returned 1 exit status
+make[1]: *** [atm.exe] Error 1
+make: *** [atm] Error 2
+```
+
+I get this same failure regardless of whether the -I line for atm
+includes ../ctsm or not. i.e., I get this failure even with this
+additional diff:
+
+```diff
+diff --git a/shr_kind_dependency/atm/Makefile b/shr_kind_dependency/atm/Makefile
+index c9cb7fb..eec55a6 100644
+--- a/shr_kind_dependency/atm/Makefile
++++ b/shr_kind_dependency/atm/Makefile
+@@ -2,4 +2,4 @@ atm.exe: atm.o
+        $(FC) -o $@ $^ -L../lilac -llilac -L../ctsm -lctsm -L../shr -lshr
+
+ atm.o: atm.f90
+-       $(FC) -I../lilac -I../ctsm -I../shr -c $<
++       $(FC) -I../lilac -c $<
+```
+
