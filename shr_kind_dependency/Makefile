@@ -1,7 +1,8 @@
-subdirs := shr ctsm
+subdirs := shr ctsm lilac
 
 all: $(subdirs)
 ctsm: shr
+lilac: ctsm shr
 $(subdirs):
 	$(MAKE) -C $@
 
