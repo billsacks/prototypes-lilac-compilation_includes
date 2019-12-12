@@ -1,3 +1,6 @@
+lilac.a: lilac.o lilac_internal.o
+	ar -r $@ $^
+
 lilac.o: lilac_internal.o
 
 lilac_internal.o: lilac_internal.f90
