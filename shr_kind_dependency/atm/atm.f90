@@ -1,6 +1,7 @@
 module atm
 
   use lilac, only : lilac_in, lilac_out
+  use ctsm, only : ctsm_in, ctsm_out
   implicit none
   private
 
@@ -15,6 +16,11 @@ contains
 
     call lilac_in(x)
     call lilac_out(x)
+
+    print *, x
+
+    call ctsm_in(x)
+    call ctsm_out(x)
 
     print *, x
   end subroutine atm_driver

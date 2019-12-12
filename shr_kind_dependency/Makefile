@@ -1,9 +1,9 @@
-subdirs := shr ctsm lilac atm
+subdirs := shr ctsm lilac atm_lib atm
 
 all: $(subdirs)
 ctsm: shr
 lilac: ctsm shr
-atm: lilac
+atm: atm_lib lilac
 $(subdirs):
 	$(MAKE) -C $@
 
