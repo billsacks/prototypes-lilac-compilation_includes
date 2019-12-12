@@ -1,15 +1,22 @@
 module ctsm
 
-  use shr_kind_mod, only : r8
+  use shr_kind_mod, only : r8 => shr_kind_r8
   implicit none
 
-  public :: call_ctsm
+  public :: ctsm_in
+  public :: ctsm_out
 
 contains
 
-  subroutine call_ctsm(x)
+  subroutine ctsm_in(x)
     real(r8), intent(in) :: x
 
     print *, x
-  end subroutine call_ctsm
+  end subroutine ctsm_in
+
+  subroutine ctsm_out(x)
+    real(r8), intent(out) :: x
+
+    x = 17
+  end subroutine ctsm_out
 end module ctsm
