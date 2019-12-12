@@ -128,6 +128,8 @@ indirectly used by the directly-used lilac modules.
 
 ## Exploring link-time issues
 
+### Collision at link-time
+
 If I introduce the following diffs (see branch link_issues):
 
 ```diff
@@ -198,3 +200,11 @@ The issue is resolved if I rename the module in ctsm (even without
 renaming the file). The issue is also resolved if subroutines are named
 differently: it appears that the issue arises if there are collisions in
 the module+subroutine name combination.
+
+### Avoiding collision at link-time
+
+In branch link_issues2 I avoid the collision at link-time by putting the
+atmosphere's ctsm code into its own library, and having the same
+interface as the real ctsm code. This links the executable, but at
+runtime, the wrong thing happens: lilac ends up calling the atmosphere's
+version rather than its own.
