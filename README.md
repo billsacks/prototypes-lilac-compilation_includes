@@ -220,3 +220,5 @@ $ atm/atm.exe
  atmosphere's version:          402
          170
 ```
+
+(The above testing was done with gfortran on my Mac.)
