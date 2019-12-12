@@ -9,7 +9,7 @@ module lilac
 contains
 
   subroutine call_lilac(x)
-    real(r8) :: x
+    real(r8), intent(in) :: x
 
     call call_ctsm(x)
   end subroutine call_lilac

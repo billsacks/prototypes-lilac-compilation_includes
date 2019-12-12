@@ -8,7 +8,7 @@ module ctsm
 contains
 
   subroutine call_ctsm(x)
-    real(r8) :: x
+    real(r8), intent(in) :: x
 
     print *, x
   end subroutine call_ctsm
