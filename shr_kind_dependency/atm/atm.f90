@@ -11,18 +11,20 @@ contains
 
   subroutine atm_driver()
     real*8 :: x
+    integer :: y
 
     x = 3
+    y = 402
 
     call lilac_in(x)
     call lilac_out(x)
 
     print *, x
 
-    call ctsm_in(x)
-    call ctsm_out(x)
+    call ctsm_in(y)
+    call ctsm_out(y)
 
-    print *, x
+    print *, y
   end subroutine atm_driver
 end module atm
 

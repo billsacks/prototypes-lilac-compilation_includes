@@ -11,13 +11,13 @@ module ctsm
 contains
 
   subroutine ctsm_in(x)
-    real*8, intent(in) :: x
+    integer, intent(in) :: x
 
     print *, "atmosphere's version: ", x
   end subroutine ctsm_in
 
   subroutine ctsm_out(x)
-    real*8, intent(out) :: x
+    integer, intent(out) :: x
 
     x = 170
   end subroutine ctsm_out
