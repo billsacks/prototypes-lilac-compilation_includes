@@ -128,7 +128,7 @@ indirectly used by the directly-used lilac modules.
 
 ## Exploring link-time issues
 
-If I introduce the following diffs:
+If I introduce the following diffs (see branch link_issues):
 
 ```diff
 diff --git a/shr_kind_dependency/atm/atm.f90 b/shr_kind_dependency/atm/atm.f90
@@ -194,3 +194,7 @@ index c9cb7fb..eec55a6 100644
 +       $(FC) -I../lilac -c $<
 ```
 
+The issue is resolved if I rename the module in ctsm (even without
+renaming the file). The issue is also resolved if subroutines are named
+differently: it appears that the issue arises if there are collisions in
+the module+subroutine name combination.
