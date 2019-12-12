@@ -114,6 +114,9 @@ build include everything that it needed directly and 1-level indirectly,
 but I get the same error as before - so it seems we need to include
 further levels of indirect uses.
 
+In 86c7661, pgi works (and gnu and intel still work, too): this adds
+`-I../ctsm` and `-I../shr` to the atm include line.
+
 ## Conclusions
 
 If we have symbol renames in use statements, then we need to be careful
