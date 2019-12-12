@@ -1,6 +1,7 @@
-subdirs := shr
+subdirs := shr ctsm
 
 all: $(subdirs)
+ctsm: shr
 $(subdirs):
 	$(MAKE) -C $@
 
