@@ -9,4 +9,4 @@ $(subdirs):
 
 .PHONY: all $(subdirs) clean
 clean:
-	rm -f */*.o */*.mod */*.a
+	rm -f */*.o */*.mod */*.a */*.exe

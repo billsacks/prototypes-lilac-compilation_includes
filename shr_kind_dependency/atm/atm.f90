@@ -19,3 +19,11 @@ contains
     print *, x
   end subroutine atm_driver
 end module atm
+
+
+program atm_program
+  use atm, only : atm_driver
+  implicit none
+
+  call atm_driver()
+end program atm_program

@@ -1,4 +1,4 @@
-lilac.a: lilac.o lilac_internal.o
+liblilac.a: lilac.o lilac_internal.o
 	ar -r $@ $^
 
 lilac.o: lilac_internal.o
