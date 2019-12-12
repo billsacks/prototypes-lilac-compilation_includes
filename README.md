@@ -53,3 +53,10 @@ I'm hoping to show that, in the `shr_kind_dependency` case, the include
 line for `atm` needs to include `shr` as well as `lilac`, but shouldn't
 need to include `ctsm`. In the `no_shr_kind_dependency` case, I hope the
 include line for `atm` only needs to include `lilac`.
+
+## Compiling
+
+To compile one of the tests, cd to the appropriate test directory, then
+run something like:
+
+`make FC=gfortran all`
