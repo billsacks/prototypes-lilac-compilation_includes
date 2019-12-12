@@ -1,6 +1,6 @@
 module lilac
 
-  use shr_kind_mod, only : r8
+  use shr_kind_mod, only : r8 => shr_kind_r8
   use ctsm, only : call_ctsm
   implicit none
 
