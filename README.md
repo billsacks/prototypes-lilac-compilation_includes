@@ -91,8 +91,23 @@ I determined that the problem is the rename of `shr_kind_r8` to `r8`
 But in commit 01c96e4 this works again. The difference in this commit
 is that module visibility is private by default.
 
+#### pgi 19.3 on cheyenne
+
+In commit 01c96e4 this does NOT work. I get:
+
+```
+pgf90 -I../lilac -c atm.f90
+PGF90-F-0004-Unable to open MODULE file ctsm.mod (atm.f90: 4)
+```
+
+So pgi seems to want us to include modules indirectly used by the
+directly-used lilac modules.
+
 ## Conclusions
 
 If we have symbol renames in use statements, then we need to be careful
 to make modules have default private visibility. This default private
 visibility is good practice in general, and we should do it regardless.
+
+However, even with this, pgi still wants us to include modules
+indirectly used by the directly-used lilac modules.
