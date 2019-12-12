@@ -60,3 +60,12 @@ To compile one of the tests, cd to the appropriate test directory, then
 run something like:
 
 `make FC=gfortran all`
+
+## Results
+
+### `shr_kind_dependency`
+
+- gfortran 8.2.0 on my Mac: works with only `-I../lilac` in the
+  compilation of atm
+  
+
